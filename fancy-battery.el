@@ -82,6 +82,9 @@ available.
 Has no effect, if `fancy-battery-mode-line' does not evaluate
 `fancy-battery-default-mode-line'.")
 
+(defcustom fancy-battery-symbol nil
+  "When set to string it will display next to the batter number")
+
 (defcustom fancy-battery-status-update-functions nil
   "Functions to run after a battery status update.
 
@@ -130,7 +133,7 @@ or `fancy-battery-discharging', depending on the current state."
                    (_ 'fancy-battery-discharging)))
            (percentage (cdr (assq ?p fancy-battery-last-status)))
            (status (if (or fancy-battery-show-percentage (string= time "N/A"))
-                       (and percentage (concat percentage "%%"))
+                       (and percentage (concat percentage fancy-battery-symbol))
                      time)))
       (if status
           (propertize status 'face face)
