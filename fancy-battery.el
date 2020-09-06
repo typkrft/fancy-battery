@@ -130,7 +130,7 @@ or `fancy-battery-discharging', depending on the current state."
                    (_ 'fancy-battery-discharging)))
            (percentage (cdr (assq ?p fancy-battery-last-status)))
            (status (if (or fancy-battery-show-percentage (string= time "N/A"))
-                       (and percentage (concat percentage "b %% "))
+                       (and percentage (concat percentage "%%"))
                      time)))
       (if status
           (propertize status 'face face)
